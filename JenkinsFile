@@ -7,6 +7,18 @@ node {
         checkout scm
     }
 
+stage('FileCopy') {
+    steps {
+        script {
+            fileOperations([
+                    fileDownloadOperation(
+                            targetFileName: '/Users/bliberat5/Desktop/bot_docker/textgenrnn_weights.hdf5',
+                            targetLocation: "${WORKSPACE}",
+                            userName: ''),
+            ])
+        }
+    }
+}
 
 
     stage('Build image') {
