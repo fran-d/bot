@@ -8,7 +8,6 @@ node {
     }
 
 stage('FileCopy') {
-    steps {
         script {
             fileOperations([
                     fileDownloadOperation(
@@ -17,7 +16,6 @@ stage('FileCopy') {
                             userName: ''),
             ])
         }
-    }
 }
 
 
