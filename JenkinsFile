@@ -13,7 +13,7 @@ stage('FileCopy') {
                     fileDownloadOperation(
                             targetFileName: '/Users/bliberat5/Desktop/bot_docker/textgenrnn_weights.hdf5',
                             targetLocation: "${WORKSPACE}",
-                            userName: ''),
+                            userName: '')
             ])
         }
 }
