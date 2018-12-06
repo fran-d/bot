@@ -23,17 +23,15 @@ class MyHandler(BaseHTTPRequestHandler):
 
     def handle_http(self, status_code, path):
         self.send_response(status_code)
-        self.send_header('Content-type', 'text/html')
+        self.send_header('Content-type', 'text/json')
         self.end_headers()
         t = textgenrnn('textgenrnn_weights.hdf5');
         if len(path) > 1:
-             print(len(path))
              generated_texts = t.generate(prefix=path[1:],n=1,temperature=0.5,return_as_list=True); 
         else:
              print(len(path))
-             print('< 1')
              generated_texts = t.generate(n=1,temperature=0.5,return_as_list=True);
-        content = '''{}'''.format('<br/><br/><br/><br/><center><h1>'+generated_texts[0]+'</h1></center>')
+        content = '''{}'''.format('{"resp":"'+generated_texts[0]+'"}')
         return bytes(content, 'UTF-8')
 
     def respond(self, opts):
